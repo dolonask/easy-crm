@@ -6,4 +6,5 @@ import lombok.Data;
 public class PinDto {
 
     private String pin;
+    private double debt;
 }

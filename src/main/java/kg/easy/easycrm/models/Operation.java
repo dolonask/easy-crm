@@ -27,7 +27,6 @@ public class Operation {
 
     private double total;
     private double debt;
-
     @Enumerated(EnumType.STRING)
     private OperationStatus status;
     private double change;

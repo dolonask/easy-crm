@@ -14,6 +14,7 @@ public class PinMapperImpl implements PinMapper {
     public Pin toPin(PinDto pinDto) {
         Pin pin = new Pin();
         pin.setPin(pinDto.getPin());
+        pin.setDebt(pinDto.getDebt());
         return pin;
     }
 
@@ -32,6 +33,7 @@ public class PinMapperImpl implements PinMapper {
 
         PinDto pinDto = new PinDto();
         pinDto.setPin(pin.getPin());
+        pinDto.setDebt(pin.getDebt());
         return pinDto;
 
     }

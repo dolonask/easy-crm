@@ -5,5 +5,6 @@ public enum OperationStatus {
 
     CLOSED,
     DEBT,
-    LOST
+    LOST,
+    PAYMENT
 }

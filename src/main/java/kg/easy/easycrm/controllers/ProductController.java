@@ -3,10 +3,7 @@ package kg.easy.easycrm.controllers;
 import kg.easy.easycrm.models.dto.ProductDto;
 import kg.easy.easycrm.services.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -29,16 +26,19 @@ public class ProductController implements BaseController<ProductDto, Long> {
         return productService.findAll();
     }
 
+    @GetMapping("/{status}")
+    public List<ProductDto> findAllByActive(@PathVariable boolean status) {
+        return productService.findAllByActive(status);
+    }
+
     @Override
     public ProductDto update(ProductDto t) {
-        System.out.println(t);
-        return null;
+        return productService.update(t);
     }
 
     @Override
     public ProductDto findById(Long id) {
-        System.out.println(id);
-        return null;
+        return productService.findById(id);
     }
 
 

@@ -24,7 +24,7 @@ public class OperationDetailMapperImpl implements OperationDetailMapper {
         OperationDetail operationDetail = new OperationDetail();
         operationDetail.setId(operationDetailDto.getId());
         operationDetail.setAmount(operationDetailDto.getAmount());
-        operationDetail.setOperation(operationMapper.toOperation(operationDetailDto.getOperation()));
+        operationDetail.setOperation(operationDetailDto.getOperation()== null? null : operationMapper.toOperation(operationDetailDto.getOperation()));
         operationDetail.setProduct(productMapper.toProduct(operationDetailDto.getProduct()));
         return operationDetail;
     }

@@ -13,4 +13,5 @@ public class Pin {
 
     @Id
     private String pin;
+    private double debt;
 }

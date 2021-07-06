@@ -2,6 +2,7 @@ package kg.easy.easycrm.controllers;
 
 import kg.easy.easycrm.models.dto.OperationDto;
 import kg.easy.easycrm.models.dto.request.OperationCreate;
+import kg.easy.easycrm.models.report.PinInfo;
 import kg.easy.easycrm.services.OperationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -27,14 +28,20 @@ public class OperationController {
     }
 
     @GetMapping("/{pin}")
-    public List<OperationDto> findByPin(@PathVariable String pin){
-        return operationService.findByPin(pin);
+    public PinInfo findByPin(@PathVariable String pin,
+                                   @RequestParam(defaultValue = "0") Integer pageNo,
+                                   @RequestParam(defaultValue = "10") Integer pageSize){
+        return operationService.findByPin(pin, pageNo, pageSize);
     }
 
     @GetMapping("/debt/{pin}")
     public List<OperationDto> findDebtOperations(@PathVariable String pin){
         return operationService.findDebtOperations(pin);
     }
+
+
+
+
 
 
 

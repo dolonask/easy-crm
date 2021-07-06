@@ -45,4 +45,9 @@ public class ProductServiceImpl implements ProductService {
                 productRepo.findById(id).orElseThrow(() -> new ResourceNotFound("Товар не найден!"))
         );
     }
+
+    @Override
+    public List<ProductDto> findAllByActive(boolean status) {
+        return productMapper.toProductDtos(productRepo.findAllByActive(status));
+    }
 }

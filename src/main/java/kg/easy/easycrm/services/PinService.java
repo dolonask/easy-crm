@@ -2,6 +2,8 @@ package kg.easy.easycrm.services;
 
 import kg.easy.easycrm.models.dto.PinDto;
 
+import java.util.List;
+
 public interface PinService {
 
     boolean setPin(String pin);
@@ -9,4 +11,8 @@ public interface PinService {
     boolean pinExists(String pin);
 
     PinDto findPin(String pin);
+
+    void setDebt(String pin, double debt);
+
+    PinDto makePayment(String pin, double payment);
 }
