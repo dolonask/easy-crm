@@ -1,13 +1,22 @@
 package kg.easy.easycrm.controllers;
 
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-public interface BaseController<T> {
+@RestController
+public interface BaseController<S,T> {
 
-    T save( T t);
-    List<T> findAll();
+    @PostMapping("/save")
+    S save(@RequestBody S s);
+
+    @GetMapping("/all")
+    List<S> findAll();
+
+    @PutMapping("/update")
+    S update (@RequestBody S s);
+
+    @GetMapping("/{id}")
+    S findById(@PathVariable T id);
+
 }

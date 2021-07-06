@@ -1,6 +1,8 @@
 package kg.easy.easycrm.services.impl;
 
 import kg.easy.easycrm.dao.UserRepo;
+import kg.easy.easycrm.exceptions.ResourceNotFound;
+import kg.easy.easycrm.exceptions.WrongCredentials;
 import kg.easy.easycrm.mappers.UserMapper;
 import kg.easy.easycrm.models.User;
 import kg.easy.easycrm.models.dto.AuthResponse;
@@ -29,11 +31,11 @@ public class UserServiceImpl implements UserService {
         User user = userRepo.findByPhone(phone);
 
         if (user == null){
-            return new AuthResponse(false,"Пользователь не найден!");
+            throw new ResourceNotFound("Пользователь не найден!");
         }
 
         if (!user.getPin().equals(pin)){
-            return new AuthResponse(false, "Неверный пароль!");
+            throw new WrongCredentials("Неверный пароль!");
         }
 
 
@@ -63,5 +65,19 @@ public class UserServiceImpl implements UserService {
     public List<UserDto> findAll() {
         return userMapper.toUserDtos(
                 userRepo.findAll(Sort.by("active")));
+    }
+
+    @Override
+    public UserDto update(UserDto t) {
+        UserDto userDto = findById(t.getId());
+        User user = userMapper.toUser(t);
+        user = userRepo.save(user);
+        return userMapper.toUserDto(user);
+    }
+
+    @Override
+    public UserDto findById(Long aLong) {
+        User user = userRepo.findById(aLong).orElseThrow(()->new ResourceNotFound("Пользователь не найден!"));
+        return userMapper.toUserDto(user);
     }
 }

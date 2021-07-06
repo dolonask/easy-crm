@@ -4,9 +4,6 @@ import kg.easy.easycrm.models.dto.StudentDto;
 
 import java.util.List;
 
-public interface StudentService {
+public interface StudentService extends BaseService<StudentDto, Long> {
 
-    StudentDto save(StudentDto studentDto);
-
-    List<StudentDto> findAll();
 }

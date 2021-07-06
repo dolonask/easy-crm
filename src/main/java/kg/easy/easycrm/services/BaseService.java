@@ -2,9 +2,11 @@ package kg.easy.easycrm.services;
 
 import java.util.List;
 
-public interface BaseService<T> {
+public interface BaseService<S,T> {
 
-    T save( T t);
-    List<T> findAll();
+    S save( S body);
+    List<S> findAll();
+    S update (S body);
+    S findById(T id);
 
 }

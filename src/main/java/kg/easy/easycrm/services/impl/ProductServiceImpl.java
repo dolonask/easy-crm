@@ -32,6 +32,14 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
+    public ProductDto update(ProductDto t) {
+        ProductDto productDto = findById(t.getId());
+        Product product = productMapper.toProduct(t);
+        product = productRepo.save(product);
+        return productMapper.toProductDto(product);
+    }
+
+    @Override
     public ProductDto findById(Long id) {
         return productMapper.toProductDto(
                 productRepo.findById(id).orElseThrow(() -> new ResourceNotFound("Товар не найден!"))

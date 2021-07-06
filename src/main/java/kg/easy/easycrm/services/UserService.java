@@ -5,7 +5,7 @@ import kg.easy.easycrm.models.dto.UserDto;
 
 import java.util.List;
 
-public interface UserService {
+public interface UserService extends BaseService<UserDto, Long> {
 
 
     AuthResponse auth(String phone, String pin);

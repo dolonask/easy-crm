@@ -96,4 +96,19 @@ public class OperationServiceImpl implements OperationService {
 
         return operationDto;
     }
+
+    @Override
+    public List<OperationDto> findAll() {
+        return null;
+    }
+
+    @Override
+    public List<OperationDto> findByPin(String pin) {
+        return null;
+    }
+
+    @Override
+    public List<OperationDto> findDebtOperations(String pin) {
+        return null;
+    }
 }
