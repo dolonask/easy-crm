@@ -1,5 +1,6 @@
 package kg.easy.easycrm.controllers;
 
+import kg.easy.easycrm.models.PinPaymentDto;
 import kg.easy.easycrm.models.dto.PinDto;
 import kg.easy.easycrm.services.PinService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,7 +16,7 @@ public class PaymentController {
     private PinService pinService;
 
     @PutMapping("/make/payment")
-    public PinDto makePayment(@RequestParam String pin, @RequestParam double payment){
+    public PinPaymentDto makePayment(@RequestParam String pin, @RequestParam double payment){
         return pinService.makePayment(pin, payment);
     }
 

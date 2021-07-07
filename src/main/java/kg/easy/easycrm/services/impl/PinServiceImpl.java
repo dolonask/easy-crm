@@ -57,17 +57,19 @@ public class PinServiceImpl implements PinService {
     }
 
     @Override
-    public PinDto makePayment(String pin, double payment) {
+    public PinPaymentDto makePayment(String pin, double payment) {
 
         PinDto pinDto = findPin(pin);
 
         PinPaymentDto pinPaymentDto = new PinPaymentDto();
         pinPaymentDto.setPayment(payment);
 
-        if (pinDto.getDebt() < payment){
-            pinPaymentDto.setDebt(pinDto.getDebt() - payment);
-        }else{
+        if (payment >= pinDto.getDebt()){
+            pinPaymentDto.setDebt(0);
             pinPaymentDto.setChange(payment - pinDto.getDebt());
+        }else{
+            pinPaymentDto.setDebt(pinDto.getDebt() - payment);
+            pinPaymentDto.setChange(0);
         }
 
         pinDto.setDebt(pinPaymentDto.getDebt());
@@ -75,6 +77,6 @@ public class PinServiceImpl implements PinService {
         pinRepo.save(pin1);
 
         operationService.setPaymentOperation(pinDto,pinPaymentDto.getPayment() - pinPaymentDto.getChange());
-        return pinDto;
+        return pinPaymentDto;
     }
 }

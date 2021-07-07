@@ -1,0 +1,1 @@
+insert into users(name, phone, pin, active) values ('Dolon Askarbekov', '0555905399', '726498', true);

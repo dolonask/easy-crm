@@ -1,5 +1,6 @@
 package kg.easy.easycrm.services;
 
+import kg.easy.easycrm.models.PinPaymentDto;
 import kg.easy.easycrm.models.dto.PinDto;
 
 import java.util.List;
@@ -14,5 +15,5 @@ public interface PinService {
 
     void setDebt(String pin, double debt);
 
-    PinDto makePayment(String pin, double payment);
+    PinPaymentDto makePayment(String pin, double payment);
 }

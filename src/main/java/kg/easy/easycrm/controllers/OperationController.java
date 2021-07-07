@@ -22,10 +22,10 @@ public class OperationController {
         return operationService.append(oper);
     }
 
-    @GetMapping("/all")
-    public List<OperationDto> findAll() {
-        return operationService.findAll();
-    }
+//    @GetMapping("/all")
+//    public List<OperationDto> findAll() {
+//        return operationService.findAll();
+//    }
 
     @GetMapping("/{pin}")
     public PinInfo findByPin(@PathVariable String pin,
@@ -34,10 +34,10 @@ public class OperationController {
         return operationService.findByPin(pin, pageNo, pageSize);
     }
 
-    @GetMapping("/debt/{pin}")
-    public List<OperationDto> findDebtOperations(@PathVariable String pin){
-        return operationService.findDebtOperations(pin);
-    }
+//    @GetMapping("/debt/{pin}")
+//    public List<OperationDto> findDebtOperations(@PathVariable String pin){
+//        return operationService.findDebtOperations(pin);
+//    }
 
 
 

@@ -45,18 +45,23 @@ public class UserServiceImpl implements UserService {
     @Override
     public UserDto save(UserDto userDto) {
 
-        String pin = userDto.getPhone().substring(userDto.getPhone().length() - 6);
+        if (userDto.getPin().isEmpty()) {
+            String pin = userDto.getPhone().substring(userDto.getPhone().length() - 6);
 
-        while (!pinService.setPin(pin)){
-            int numPin = Integer.parseInt(pin);
-            numPin++;
-            pin = String.valueOf(numPin);
+            while (!pinService.setPin(pin)) {
+                int numPin = Integer.parseInt(pin);
+                numPin++;
+                pin = String.valueOf(numPin);
+            }
+
+            userDto.setPin(pin);
+
         }
-
-        userDto.setPin(pin);
 
         User user = userMapper.toUser(userDto);
         user = userRepo.save(user);
+
+        pinService.setPin(userDto.getPin());
 
         return userMapper.toUserDto(user);
     }

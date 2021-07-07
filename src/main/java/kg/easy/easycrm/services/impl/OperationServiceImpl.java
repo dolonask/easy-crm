@@ -91,6 +91,7 @@ public class OperationServiceImpl implements OperationService {
 
         Operation operation = operationMapper.toOperation(operationDto);
         operation = operationRepo.save(operation);
+        operationDto = operationMapper.toOperationDto(operation);
 
         Operation finalOperation = operation;
         List<OperationDetail> operationDetails = operationDetailDtos
@@ -106,6 +107,8 @@ public class OperationServiceImpl implements OperationService {
 
         operationDetailRepo.saveAll(operationDetails);
         pinService.setDebt(oper.getPin(), operationDto.getDebt());
+
+
 
         return operationDto;
     }
@@ -155,6 +158,7 @@ public class OperationServiceImpl implements OperationService {
                         operationReport.setAddDate(x.getAddDate());
                         operationReport.setId(x.getId());
                         operationReport.setDebt(x.getDebt());
+                        operationReport.setTotal(x.getTotal());
 
                         return  operationReport;
                     })
