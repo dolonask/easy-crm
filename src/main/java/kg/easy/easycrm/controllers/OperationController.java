@@ -12,6 +12,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("api/v1/operation")
+@CrossOrigin
 public class OperationController {
 
     @Autowired

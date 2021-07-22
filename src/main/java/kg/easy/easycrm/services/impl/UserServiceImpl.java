@@ -45,7 +45,7 @@ public class UserServiceImpl implements UserService {
     @Override
     public UserDto save(UserDto userDto) {
 
-        if (userDto.getPin().isEmpty()) {
+        if (userDto.getPin() == null || userDto.getPin().isEmpty()) {
             String pin = userDto.getPhone().substring(userDto.getPhone().length() - 6);
 
             while (!pinService.setPin(pin)) {

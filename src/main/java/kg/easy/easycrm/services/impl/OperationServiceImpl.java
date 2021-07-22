@@ -106,7 +106,7 @@ public class OperationServiceImpl implements OperationService {
                 .collect(Collectors.toList());
 
         operationDetailRepo.saveAll(operationDetails);
-        pinService.setDebt(oper.getPin(), operationDto.getDebt());
+        operationDto.setPin(pinService.setDebt(oper.getPin(), operationDto.getDebt()));
 
 
 

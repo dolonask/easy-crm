@@ -48,12 +48,14 @@ public class PinServiceImpl implements PinService {
     }
 
     @Override
-    public void setDebt(String pin, double debt) {
+    public PinDto setDebt(String pin, double debt) {
+        PinDto pinDto = findPin(pin);
         if (debt > 0) {
-            PinDto pinDto = findPin(pin);
             pinDto.setDebt(pinDto.getDebt() + debt);
-            pinRepo.save(pinMapper.toPin(pinDto));
+            pinDto = pinMapper.toPinDto(pinRepo.save(pinMapper.toPin(pinDto)));
         }
+
+        return pinDto;
     }
 
     @Override
