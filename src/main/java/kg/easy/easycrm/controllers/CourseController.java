@@ -6,6 +6,7 @@ import io.swagger.annotations.ApiResponse;
 import kg.easy.easycrm.models.dto.CourseDto;
 import kg.easy.easycrm.services.CourseService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -13,6 +14,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping(value = "api/v1/course")
+@CrossOrigin
 public class CourseController implements BaseController<CourseDto, Long>{
 
     @Autowired

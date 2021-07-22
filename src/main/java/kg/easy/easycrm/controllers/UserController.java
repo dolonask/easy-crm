@@ -14,6 +14,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("api/v1/user")
+@CrossOrigin
 public class UserController implements BaseController<UserDto, Long>{
 
 
@@ -47,8 +48,8 @@ public class UserController implements BaseController<UserDto, Long>{
     }
 
     @Override
-    public UserDto findById(Long aLong) {
-        return userService.findById(aLong);
+    public UserDto findById(Long id) {
+        return userService.findById(id);
     }
 
 

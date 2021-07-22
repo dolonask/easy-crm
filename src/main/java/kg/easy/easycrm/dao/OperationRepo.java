@@ -1,6 +1,5 @@
 package kg.easy.easycrm.dao;
 
-import jdk.internal.org.objectweb.asm.tree.LdcInsnNode;
 import kg.easy.easycrm.models.Operation;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;

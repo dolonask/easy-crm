@@ -13,7 +13,7 @@ public interface PinService {
 
     PinDto findPin(String pin);
 
-    void setDebt(String pin, double debt);
+    PinDto setDebt(String pin, double debt);
 
     PinPaymentDto makePayment(String pin, double payment);
 }
